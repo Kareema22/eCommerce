@@ -51,7 +51,12 @@ export default function RecentProducts({ category }) {
     }
   }
 
-  useEffect(() => { }, [withListIds])
+  async function handleSetWishList() {
+    const ids = await getUserWishListIds()
+    setWithListIds(ids)
+  }
+
+  useEffect(() => { handleSetWishList() }, [withListIds])
 
 
 

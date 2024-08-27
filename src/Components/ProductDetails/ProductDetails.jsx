@@ -16,14 +16,21 @@ export default function ProductDetails() {
   const [withListIds, setWithListIds] = useState([])
   const [loading, setLoading] = useState(false)
 
+  const { addProductToUserWishList, getUserWishListIds } = useContext(WishListContext)
+
+  async function handleSetWishList() {
+    const ids = await getUserWishListIds()
+    setWithListIds(ids)
+  }
+
   useEffect(() => {
+    handleSetWishList()
     getProduct(id)
   }, [id, withListIds])
 
 
 
   const { addProductToUserCart } = useContext(CartContext)
-  const { addProductToUserWishList, getUserWishListIds } = useContext(WishListContext)
 
   const navigate = useNavigate()
 
