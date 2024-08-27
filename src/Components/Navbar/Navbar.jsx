@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 import { UserContext } from '../../Context/UserContext';
 
@@ -40,9 +40,10 @@ export default function Navbar() {
         <div>
           {userToken && <ul className='flex flex-col lg:flex-row'>
             <li className='py-2 px-3 relative'>
-              <i className='fa-solid fa-cart-shopping  text-4xl cursor-pointer'>
-                <span className='bg-green-500 text-white p-1 text-sm absolute top-0 right-2 rounded'>{cartCount}</span>
-              </i>
+              <Link to='/cart'>
+                <i className='fa-solid fa-cart-shopping  text-4xl cursor-pointer'>
+                  <span className='bg-green-500 text-white p-1 text-sm absolute top-0 right-2 rounded'>{cartCount}</span>
+                </i></Link>
             </li>
             <li className='py-2'> <span className='mx-2  text-lg text-slate-900 font-light cursor-pointer' onClick={handleLogout}>Logout</span></li>
           </ul>}
